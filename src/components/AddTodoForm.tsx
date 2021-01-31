@@ -4,14 +4,14 @@ interface AddTodoFormProps {
   addTodo: AddTodo;
 }
 
-export default function AddTodoForm({ addTodo }: AddTodoFormProps) {
+export function AddTodoForm({ addTodo }: AddTodoFormProps) {
   const [newTodo, setNewTodo] = useState("");
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTodo(e.target.value);
   };
   const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    addTodo(newTodo);
+    newTodo.trim() !== "" && addTodo(newTodo);
     setNewTodo("");
   };
   return (
